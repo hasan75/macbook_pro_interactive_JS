@@ -2,27 +2,25 @@ function ExtraCalculation(product, price){
     const ExtraPrice = document.getElementById(product+'-cost');
     ExtraPrice.innerText = price;
     const ExtraPriceAmount = parseFloat(ExtraPrice.innerText)
-    //return ExtraPriceAmount
+
+    // calculate total 
     calculateTotal()
 }
 
-// function getElement(product){
-//    const cost = document.getElementById(product+'-cost');
-//     const costText = cost.innerText;
-//     const costAmount = parseFloat(costText)
-// }
+function getElement(product){
+   const cost = document.getElementById(product+'-cost');
+    const costText = cost.innerText;
+    console.log(costText)
+    const costAmount = parseFloat(costText)
+    return costAmount
+}
 
 //calculate total
 function calculateTotal(){
-    const basePrice = document.getElementById('base-price-cost').innerText
-    const bestPrice = parseFloat(basePrice)
-    const memoryCost = document.getElementById('memory-cost').innerText
-    const extraMemoryCost = parseFloat(memoryCost)
-    const storageCost = document.getElementById('storage-cost').innerText
-    const extraStorageCost = parseFloat(storageCost)
-
-    const deliveryCost = document.getElementById('delivery-cost').innerText
-    const extraDeliveryCost = parseFloat(deliveryCost)
+    const bestPrice = getElement('base-price')
+    const extraMemoryCost = getElement('memory')
+    const extraStorageCost = getElement('storage')
+    const extraDeliveryCost = getElement('delivery')
 
     const totalAmount = bestPrice + extraMemoryCost + extraStorageCost + extraDeliveryCost;
     
