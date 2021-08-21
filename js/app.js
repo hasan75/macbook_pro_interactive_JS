@@ -1,39 +1,37 @@
 function ExtraCalculation(product, price){
     const ExtraPrice = document.getElementById(product+'-cost');
     ExtraPrice.innerText = price;
-    const ExtraPriceAmount = parseFloat(ExtraPrice.innerText)
+    const ExtraPriceAmount = parseFloat(ExtraPrice.innerText);
 
     // calculate total 
-    calculateTotal()
+    calculateTotal();
 }
 
-function getElement(product){
+function getPrice(product){
    const cost = document.getElementById(product+'-cost');
     const costText = cost.innerText;
-    console.log(costText)
-    const costAmount = parseFloat(costText)
-    return costAmount
+    const costAmount = parseFloat(costText);
+    return costAmount;
 }
 
 //calculate total
 function calculateTotal(){
-    const bestPrice = getElement('base-price')
-    const extraMemoryCost = getElement('memory')
-    const extraStorageCost = getElement('storage')
-    const extraDeliveryCost = getElement('delivery')
+    const bestPrice = getPrice('base-price');
+    const extraMemoryCost = getPrice('memory');
+    const extraStorageCost = getPrice('storage');
+    const extraDeliveryCost = getPrice('delivery');
 
     const totalAmount = bestPrice + extraMemoryCost + extraStorageCost + extraDeliveryCost;
     
     //total price
-    const totalPrice = document.getElementById('total-price')
+    const totalPrice = document.getElementById('total-price');
     totalPrice.innerText = totalAmount;
 
     //the last total price
     const finalTotal = document.getElementById('last-total');
     finalTotal.innerText = totalAmount;
 }
-
-//extra memory button events
+//extra-memory-include buttons events
 document.getElementById('memory8GB-button').addEventListener('click',function(){
    ExtraCalculation('memory', 0);
 })
@@ -41,7 +39,7 @@ document.getElementById('memory16GB-button').addEventListener('click',function()
     ExtraCalculation('memory', 180);
 })
 
-//extra storage button events
+//extra-storage-include buttons events
 document.getElementById('storage256-button').addEventListener('click',function(){
     ExtraCalculation('storage', 0);
 })
@@ -54,7 +52,7 @@ document.getElementById('storage1TB-button').addEventListener('click',function()
     ExtraCalculation('storage', 180);
 })
 
-//delivery charge events
+//delivery-charge events
 document.getElementById('delivery-free-button').addEventListener('click',function(){
     ExtraCalculation('delivery', 0);
 })
@@ -63,12 +61,13 @@ document.getElementById('delivery-cost-button').addEventListener('click',functio
 })
 
 //event for cupon
-document.getElementById('apply-button').addEventListener('click',function(){
-    const promoInput = document.getElementById('input-field')
-    const promoText = promoInput.value
+document.getElementById('apply-button').addEventListener('click',function(event){
+    const promoInput = document.getElementById('input-field');
+    const promoText = promoInput.value;
     if(promoText == 'stevekaku'){
         const finalTotal = document.getElementById('last-total');
-        const finalTotalAmount = parseFloat(finalTotal.innerText)
-        finalTotal.innerText = finalTotalAmount - (finalTotalAmount/5)
+        const finalTotalAmount = parseFloat(finalTotal.innerText);
+        finalTotal.innerText = finalTotalAmount - (finalTotalAmount/5); //20% will be discounted
     }
+    promoInput.value = ''
 })
