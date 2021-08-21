@@ -24,8 +24,13 @@ function calculateTotal(){
 
     const totalAmount = bestPrice + extraMemoryCost + extraStorageCost + extraDeliveryCost;
     
+    //total price
     const totalPrice = document.getElementById('total-price')
     totalPrice.innerText = totalAmount;
+
+    //the last total price
+    const lastTotal = document.getElementById('last-total');
+    lastTotal.innerText = totalAmount;
 }
 
 //extra memory button events
@@ -55,4 +60,15 @@ document.getElementById('delivery-free-button').addEventListener('click',functio
 })
 document.getElementById('delivery-cost-button').addEventListener('click',function(){
     ExtraCalculation('delivery', 20);
+})
+
+//event for cupon
+document.getElementById('apply-button').addEventListener('click',function(){
+    const promoInput = document.getElementById('input-field')
+    const promoText = promoInput.value
+    if(promoText == 'stevekaku'){
+        const lastTotal = document.getElementById('last-total');
+        const lastTotalAmount = parseFloat(lastTotal.innerText)
+        lastTotal.innerText = lastTotalAmount - (lastTotalAmount/5)
+    }
 })
