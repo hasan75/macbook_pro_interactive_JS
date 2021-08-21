@@ -29,8 +29,8 @@ function calculateTotal(){
     totalPrice.innerText = totalAmount;
 
     //the last total price
-    const lastTotal = document.getElementById('last-total');
-    lastTotal.innerText = totalAmount;
+    const finalTotal = document.getElementById('last-total');
+    finalTotal.innerText = totalAmount;
 }
 
 //extra memory button events
@@ -67,8 +67,8 @@ document.getElementById('apply-button').addEventListener('click',function(){
     const promoInput = document.getElementById('input-field')
     const promoText = promoInput.value
     if(promoText == 'stevekaku'){
-        const lastTotal = document.getElementById('last-total');
-        const lastTotalAmount = parseFloat(lastTotal.innerText)
-        lastTotal.innerText = lastTotalAmount - (lastTotalAmount/5)
+        const finalTotal = document.getElementById('last-total');
+        const finalTotalAmount = parseFloat(finalTotal.innerText)
+        finalTotal.innerText = finalTotalAmount - (finalTotalAmount/5)
     }
 })
